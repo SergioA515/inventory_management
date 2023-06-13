@@ -20,5 +20,10 @@ class Conexion{
             $this->pdo=null;
         }
     }
+    public function preparar_consulta($sql_query, $stQuery=[]){
+        $pstm=$this->pdo->prepare($sql_query);
+        $pstm->execute($stQuery);
+        return $pstm->fetchAll(PDO::FETCH_ASSOC);
+    }
 } 
 ?>
