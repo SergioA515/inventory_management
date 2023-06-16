@@ -37,30 +37,3 @@
                 </div>
             </div>
         </div>
-        <div class="content-info">
-            <form action="" class="register_obj">
-                <p class="title">Registro De Productos</p>
-                <label for="nombre_producto" class="usuarioLbl">Usuario Administrador</label>
-                <input name="nombre_producto" type="text" class="usuarioInp">
-                <label for="valor_producto" class="usuarioLbl">Contraseña Administrador</label>
-                <input name="valor_producto" type="text" class="usuarioInp">
-                <label for="cantidad_producto" class="usuarioLbl">Usuario Administrador</label>
-                <input name="cantidad_producto" type="text" class="usuarioInp">
-                <input type="button" value="Actualizar">
-            </form>
-        </div>
-    </div>
-    <footer>
-    <div class="footer-min">
-        <p class="info">
-            Este Sistema es Propiedad Privada de la Distribuidora Contra
-            <br>
-            01-05-2023
-            <br>
-            Contactenos - 000000000
-        </p>
-    </div>
-    </footer>
-    <script src="/public/js/script.js"></script>
-</body>
-</html>

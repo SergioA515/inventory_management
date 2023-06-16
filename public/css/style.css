@@ -35,7 +35,7 @@ div.header{
     justify-content: center;
     
 }
-.logIn{
+form.logIn{
     height: 25em;
     width: 25em;
     display: flex;
@@ -54,10 +54,12 @@ div.footer{
     margin: 10px 10px 2px -5px;
     background: #94D5F5;
 }
-/* @Home - Contenidos */
+/* @General - Contenidos dentro de la app */
+/* - Barra de Menu => */
 div.header-reduce{
     position: relative;
-    max-height: 500vh;
+    max-width: 500vh;
+    min-width: 100vh;
     height: 10em;
     padding-top: 1%;
     margin: 1em;
@@ -65,7 +67,8 @@ div.header-reduce{
     border-radius: 20px;
 }
 nav{
-    transform: translate(15px, 115px);
+    transform: translate(0px, 115px);
+    justify-content: space-between;
     display: flex;
     align-items:center;
     width: 100%;
@@ -78,16 +81,17 @@ nav span i{
     font-size: 2.7rem;
     cursor: pointer;
 }
+/* - barra lateral del menu hamburguesa */
 div #aside{
     background-color: #83C4DB;
     width: 260px;
-    height: 100vh;
+    height: 105vh;
     position: absolute;
     top: 0;
     left: 0;
     bottom:0;
     overflow-y: hidden;
-    margin-top: 200px;
+    margin-top: 190px;
     transition: 0.5s;
     border-radius: 10px;
 }
@@ -122,21 +126,46 @@ aside::-webkit-scrollbar-thumb{
     font-size: 1.5rem;
     font-weight: 500;
 }
-
+/* - footer de la app */
+footer{
+    display: flex;
+    justify-content: center;
+    border-radius: 60px;
+}
 div.footer-min{
     display: flex;
-    width: 100%;
-    height: 30%;
-    margin: 10px 10px 2px -5px;
+    width: 95%;
+    max-width: 500vh;
+    height: 20%;
     background: #94D5F5;
+    
+    border-radius: 2em;
 }
-
+/* - container comun de la app */
 div.content-info{
     height: 35em;
     width: 50%;
-    min-width: 50vh;
+    min-width: 90vh;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 90vh;
     background: #94D5F5;
     border-radius: 15px;
     margin: 2em;
     padding: 20px;
+}
+/* - formularios */
+form.register_obj{  
+    height: 25em;
+    width: 35em;
+    min-width: 75vh;
+    max-width: 500vh;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-flow:column;
+    margin: 1em;
+    padding: 2em;
+    border-radius: 60px;
+    background-color: #326773;
 }

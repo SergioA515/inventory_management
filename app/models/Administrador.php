@@ -5,14 +5,17 @@ class Administrador extends Conexion{
     private $nombre;
     private $apellido;
     private $usuario;
+    private $contrasenia;
     private $direccion;
     private $correo;
-    public function __construct($nombre,$apellido,$usuario,$direccion,$correo){
+
+    public function __construct($nombre,$apellido,$usuario,$contrasenia,$direccion,$correo){
         $this->nombre=$nombre;
         $this->direccion=$direccion;
         $this->correo=$correo;
         $this->apellido=$apellido;
         $this->usuario=$usuario;
+        $this->$contrasenia=$contrasenia;
     }
     public function __get($propiedad)
     {
@@ -36,8 +39,10 @@ class Administrador extends Conexion{
                 $correo=$_POST['correo'];
                 $apellido=$_POST['apellido'];
                 $usuario=$_POST['usuario'];
-                $sql='INSERT INTO `administradores`(adm_nombre,adm_apellido,adm_usuario,adm_direccion,adm_correo)VALUES(?,?,?,?,?)';
-                $con=$this->preparar_consulta($sql,[$nombre,$apellido,$direccion,$correo,$usuario]);
+                $contrasenia=$_POST['contrasenia'];
+                $contrasenia = password_hash($contrasenia, PASSWORD_BCRYPT);
+                $sql='INSERT INTO `administradores`(adm_nombre,adm_apellido,adm_usuario,adm_contraseni,adm_direccion,adm_correo)VALUES(?,?,?,?,?,?)';
+                $con=$this->preparar_consulta($sql,[$nombre,$apellido,$direccion,$correo,$usuario,$contrasenia]);
                 parent::desconectar();
             }catch(Exception $err){
                 echo($err->getMessage());
@@ -77,6 +82,9 @@ class Administrador extends Conexion{
         }catch(Exception $err){
             echo($err->getMessage());
         }
+    }
+    public function __toString(){
+        return self::class.$this->usuario;
     }
 }
 ?>
