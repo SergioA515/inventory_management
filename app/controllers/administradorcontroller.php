@@ -4,7 +4,11 @@ require_once('models/Administrador.php');
 class AdministradorController{
 
     public function validacion_ingreso(){
-        
+        if (isset($_POST)){
+            $usuario = $_POST['usuario'];
+            $contrasenia = $_POST['usuario'];
+            
+        }
     }
 
 }

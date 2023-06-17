@@ -1,3 +1,5 @@
+<?php
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,10 +19,10 @@
         <form action="" class="logIn">
             <p class="welcomeText">Bienvenido</p>
             <label for="usuarioInp" class="usuarioLbl">Usuario Administrador</label>
-            <input type="text" class="usuarioInp">
+            <input name="usuario" type="text" class="usuarioInp">
             <label for="contraseniaInp" class="contraseniaLbl">Contraseña Administrador</label>
-            <input type="text" class="contraseniaInp">
-            <input type="button" value="Ingresar">
+            <input name="contrasenia" type="text" class="contraseniaInp">
+            <input name="ingresar" type="button" value="Ingresar">
         </form>
     </div>
     <footer>
