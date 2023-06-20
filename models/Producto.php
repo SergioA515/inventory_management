@@ -1,10 +1,11 @@
 <?php 
 include_once ('Conexion.php');
-class Producto extends Conexion{
+class Producto {
     private $id;
     private $nombre;
     private $precio;
     private $cantidad_disponible;
+    private $con=new Conexion;
     public function __get($propiedad)
     {
         if(!property_exists($this,$propiedad)){
@@ -26,8 +27,8 @@ class Producto extends Conexion{
                 $precio=$_POST['precio'];
                 $cantidad_disponible=$_POST['cantidad_disponible'];
                 $sql='INSERT INTO `productos`(pro_nombre, pro_precio, pro_cantidad_disponible)VALUES(?,?,?)';
-                $con=$this->preparar_consulta($sql,[$nombre,$precio,$cantidad_disponible]);
-                parent::desconectar();
+                $this->con->preparar_consulta($sql,[$nombre,$precio,$cantidad_disponible]);
+                $this->con->desconectar();
             }catch(Exception $err){
                 echo($err->getMessage());
             }
@@ -37,8 +38,8 @@ class Producto extends Conexion{
         try{
             $nombre=$_POST['nombre'];
             $sql='SELECT * FROM `productos` WHERE `pro_nombre`=?';
-            $con=$this->preparar_consulta($sql,[$nombre]);
-            parent::desconectar();
+            $this->con->preparar_consulta($sql,[$nombre]);
+            $this->con->desconectar();
         }catch(Exception $err){
             echo($err->getMessage());
         }
@@ -49,8 +50,8 @@ class Producto extends Conexion{
             $precio=$_POST['precio'];
             $cantidad_disponible=$_POST['cantidad_disponible'];
             $sql='UPDATE`productos`SET `pro_nombre`=?,`pro_precio`=?,`pro_cantidad_disponible`=? WHERE `pro_nombre`='.$nombre;;
-            $con=$this->preparar_consulta($sql,[$nombre,$precio,$cantidad_disponible]);
-            parent::desconectar();
+            $this->con->preparar_consulta($sql,[$nombre,$precio,$cantidad_disponible]);
+            $this->con->desconectar();
         }catch(Exception $err){
             echo($err->getMessage());
         }
@@ -58,9 +59,31 @@ class Producto extends Conexion{
     public function deleteProducto(){
         try{
             $nombre=$_POST['nombre'];
-            $sql='DELETE FROM `producto` WHERE `pro_nombre`=?';
-            $con=$this->preparar_consulta($sql,[$nombre]);
-            parent::desconectar();
+            $sql='DELETE FROM `productos` WHERE `pro_nombre`=?';
+            $this->con->preparar_consulta($sql,[$nombre]);
+            $this->con->desconectar();
+        }catch(Exception $err){
+            echo($err->getMessage());
+        }
+    }
+    public function selectAll(){
+        try {
+            $sql='SELECT prod_nombre, prod_precio, prod_cantidad_disponible FROM `productos`';
+            $results = $this->con->preparar_consulta($sql,[]);
+            $productos=[];
+            foreach($results as $producto){
+                $nombre=$producto['prod_nombre'];
+                $precio=$producto['prod_precio'];
+                $cantidad_disponible=$producto['prod_cantidad_disponible'];
+                
+                $productos[]= [
+                'nombre'=> $nombre,
+                'precio'=>$precio,
+                'cantidad'=>$cantidad_disponible
+                ];
+            }
+            $this->con->desconectar();
+            return $productos;
         }catch(Exception $err){
             echo($err->getMessage());
         }

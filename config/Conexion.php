@@ -2,7 +2,8 @@
 class Conexion{
     private $pdo;
     private $status=false;
-    public function __construct($user='root',$password='',$host='localhost',$db='inventario_exam')
+    private static $instancia;
+    private function __construct($user='root',$password='',$host='localhost',$db='inventario_exam')
     {
         try{
             $DSN = "mysql:host=$host;db=$db;charset=utf8mb4";
@@ -13,6 +14,16 @@ class Conexion{
             echo($err->getMessage());
             die();
         }
+    }
+    public static function obtenerInstancia() {
+        if (self::$instancia === null) {
+            self::$instancia = new self();
+        }
+        return self::$instancia;
+    }
+
+    public function obtenerConexion() {
+        return $this->pdo;
     }
     public function desconectar()
     {

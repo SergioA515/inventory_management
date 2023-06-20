@@ -1,6 +1,6 @@
 <?php 
 include_once ('Conexion.php');
-class Administrador extends Conexion{
+class Administrador {
     private $id;
     private $nombre;
     private $apellido;
@@ -9,13 +9,13 @@ class Administrador extends Conexion{
     private $direccion;
     private $correo;
 
-    public function __construct($nombre,$apellido,$usuario,$contrasenia,$direccion,$correo){
+    public function __construct($nombre='',$apellido='',$usuario='',$contrasenia='',$direccion='',$correo=''){
         $this->nombre=$nombre;
         $this->direccion=$direccion;
         $this->correo=$correo;
         $this->apellido=$apellido;
         $this->usuario=$usuario;
-        $this->$contrasenia=$contrasenia;
+        $this->contrasenia=$contrasenia;
     }
     public function __get($propiedad)
     {
@@ -35,15 +35,16 @@ class Administrador extends Conexion{
         if(isset($_POST['administrador'])){
             try{
                 $nombre=$_POST['nombre'];
-                $direccion=$_POST['direccion'];
-                $correo=$_POST['correo'];
                 $apellido=$_POST['apellido'];
                 $usuario=$_POST['usuario'];
                 $contrasenia=$_POST['contrasenia'];
+                $direccion=$_POST['direccion'];
+                $correo=$_POST['correo'];
                 $contrasenia = password_hash($contrasenia, PASSWORD_BCRYPT);
+                $db=new Conexion;
                 $sql='INSERT INTO `administradores`(adm_nombre,adm_apellido,adm_usuario,adm_contraseni,adm_direccion,adm_correo)VALUES(?,?,?,?,?,?)';
-                $con=$this->preparar_consulta($sql,[$nombre,$apellido,$direccion,$correo,$usuario,$contrasenia]);
-                parent::desconectar();
+                $db->preparar_consulta($sql,[$nombre,$apellido,$usuario,$contrasenia,$direccion,$correo]);
+                $db->desconectar();
             }catch(Exception $err){
                 echo($err->getMessage());
             }
@@ -51,14 +52,15 @@ class Administrador extends Conexion{
     }
     public function selectAdministradorNombre($nombre){
         try{
-            $nombre=$_POST['nombre'];
             $sql='SELECT * FROM `administradores` WHERE `adm_nombre`=?';
-            $con=$this->preparar_consulta($sql,[$nombre]);
-            parent::desconectar();
+            $db=new Conexion;
+            $db->preparar_consulta($sql,[$nombre]);
+            $db->desconectar();
         }catch(Exception $err){
             echo($err->getMessage());
         }
     }
+    
     public function updateAdministrador(){
         try{
             $nombre=$_POST['nombre'];
@@ -66,22 +68,42 @@ class Administrador extends Conexion{
             $usuario=$_POST['usuario'];
             $direccion=$_POST['direccion'];
             $correo=$_POST['correo'];
-            $sql='UPDATE`administradores`SET `adm_nombre`=?,`adm_apellido`=?,`adm_usuario`=?,`adm_direccion`=?,`adm_correo`=? WHERE `adm_nombre`='.$nombre;;
-            $con=$this->preparar_consulta($sql,[$nombre,$apellido,$usuario,$direccion,$correo]);
-            parent::desconectar();
+            $sql='UPDATE `administradores` SET `adm_nombre`=?,`adm_apellido`=?,`adm_usuario`=?,`adm_direccion`=?,`adm_correo`=? WHERE `adm_nombre`=?';
+            $db=new Conexion;
+            $db->preparar_consulta($sql,[$nombre,$apellido,$usuario,$direccion,$correo]);
+            $db->desconectar();
         }catch(Exception $err){
             echo($err->getMessage());
         }
     }
+    
     public function deleteAdministrador(){
         try{
             $nombre=$_POST['nombre'];
             $sql='DELETE FROM `administradores` WHERE `adm_nombre`=?';
-            $con=$this->preparar_consulta($sql,[$nombre]);
-            parent::desconectar();
+            $db=new Conexion;
+            $db->preparar_consulta($sql,[$nombre]);
+            $db->desconectar();
         }catch(Exception $err){
             echo($err->getMessage());
         }
+    }
+    public function log_in(){
+        $usuario=$this->usuario;
+        $contrasenia=$this->contrasenia;
+        $verificar= new SeguridadAdministrador;
+        if (!($verificar->log_sesion==true)){
+            echo('Acceso Denegado');
+        }
+        $_SESSION['nombre']=$usuario;
+        $administrador[]=[$usuario,$contrasenia];
+        return $administrador;
+    }
+    public function log_out(){
+        session_unset();
+        session_destroy();
+        header('Location:/views/ingreso.php');
+        exit();
     }
     public function __toString(){
         return self::class.$this->usuario;

@@ -1,9 +1,10 @@
 <?php 
 include_once ('Conexion.php');
-class Mayorista extends Conexion{
+class Mayorista{
     private $id;
     private $nombre;
     private $direccion;
+    private $db;
  
     public function __get($propiedad)
     {
@@ -25,8 +26,8 @@ class Mayorista extends Conexion{
                 $nombre=$_POST['nombre'];
                 $direccion=$_POST['direccion'];
                 $sql='INSERT INTO `Proveedores`(prov_nombre, prov_direccion)VALUES(?,?)';
-                $con=$this->preparar_consulta($sql,[$nombre,$direccion]);
-                parent::desconectar();
+                $this->db->preparar_consulta($sql,[$nombre,$direccion]);
+                $this->db->desconectar();
             }catch(Exception $err){
                 echo($err->getMessage());
             }
@@ -36,8 +37,8 @@ class Mayorista extends Conexion{
         try{
             $nombre=$_POST['nombre'];
             $sql='SELECT * FROM `Mayoristas` WHERE `pro_nombre`=?';
-            $con=$this->preparar_consulta($sql,[$nombre]);
-            parent::desconectar();
+            $this->db->preparar_consulta($sql,[$nombre]);
+            $this->db->desconectar();
         }catch(Exception $err){
             echo($err->getMessage());
         }
@@ -47,8 +48,8 @@ class Mayorista extends Conexion{
             $nombre=$_POST['nombre'];
             $direccion=$_POST['direccion'];
             $sql='UPDATE`Mayoristas`SET `may_nombre`=?,`may_direccion`=? WHERE `may_nombre`='.$nombre;
-            $con=$this->preparar_consulta($sql,[$nombre,$direccion]);
-            parent::desconectar();
+            $this->db->preparar_consulta($sql,[$nombre,$direccion]);
+            $this->db->desconectar();
         }catch(Exception $err){
             echo($err->getMessage());
         }
@@ -57,8 +58,28 @@ class Mayorista extends Conexion{
         try{
             $nombre=$_POST['nombre'];
             $sql='DELETE FROM `Mayorista` WHERE `may_nombre`=?';
-            $con=$this->preparar_consulta($sql,[$nombre]);
-            parent::desconectar();
+            $this->db->preparar_consulta($sql,[$nombre]);
+            $this->db->desconectar();
+        }catch(Exception $err){
+            echo($err->getMessage());
+        }
+    }
+    public function selectAll(){
+        try{
+            $sql='SELECT may_nombre,may_direccion FROM mayoristas';
+            $results = $this->db->preparar_consulta($sql,[]);
+            $mayoristas=[];
+            foreach($results as $mayorista){
+                $nombre=$mayorista['may_nombre'];
+                $direccion=$mayorista['may_direccion'];
+
+                $mayoristas[]=[
+                    'nombre'=>$nombre,
+                    'direccion'=>$direccion
+                ];
+            }
+            $this->db->desconectar();
+            return $mayoristas;
         }catch(Exception $err){
             echo($err->getMessage());
         }

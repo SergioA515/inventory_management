@@ -169,3 +169,8 @@ form.register_obj{
     border-radius: 60px;
     background-color: #326773;
 }
+/* - tabla de contenidos */
+.table-container {
+    max-height: 400px;
+    overflow-y: scroll;
+}

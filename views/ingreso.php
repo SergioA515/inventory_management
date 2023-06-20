@@ -16,7 +16,7 @@
         </p>
     </div>
     <div class="container">
-        <form action="" class="logIn">
+        <form action="" class="logIn" method="post">
             <p class="welcomeText">Bienvenido</p>
             <label for="usuarioInp" class="usuarioLbl">Usuario Administrador</label>
             <input name="usuario" type="text" class="usuarioInp">
