@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-06-2023 a las 10:15:17
+-- Tiempo de generación: 21-06-2023 a las 06:40:06
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -77,7 +77,8 @@ CREATE TABLE `pedidos` (
   `prod_id` int(11) DEFAULT NULL,
   `prov_id` int(11) DEFAULT NULL,
   `may_id` int(11) DEFAULT NULL,
-  `adm_id` int(11) DEFAULT NULL
+  `adm_id` int(11) DEFAULT NULL,
+  `ped_alias` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------

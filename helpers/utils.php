@@ -16,7 +16,7 @@ $url = strtok($url, '?');
 
 // Rutas disponibles y sus correspondientes controladores y acciones
 $routes = [
-    '/productos' => ['ProductoController', 'verProductos'],
+    '/productos' => ['ProductoController', 'verProductos'], ['ProductoController', 'edicionProductos'],
     '/mayoristas' => ['MayoristaController', 'verMayoristas'],
     '/pedidos' => ['PedidoController', 'verPedidos']
     // Agrega más rutas según tus necesidades

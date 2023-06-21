@@ -12,6 +12,14 @@ class ProductoController{
         return $productos;
     }
 
+    public function alterar_registro(){
 
+    }
+    public function edicionProductos(){
+        
+    }
+    public function eliminarProductos(){
+
+    }
 }
 ?>
