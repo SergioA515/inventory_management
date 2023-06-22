@@ -1,8 +1,10 @@
 <?php
 // Aquí trabajaremos el login y la sesión del administrador en la app;
-require_once('models/Administrador.php');
+require_once('../models/Administrador.php');
+require_once('../models/SeguridadAdministrador.php');
 class AdministradorController {
     public function log_in() {
+        echo 'El método log_in() se está ejecutando';
         // Verificar si se envió el formulario
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Obtener los datos del formulario
@@ -16,13 +18,14 @@ class AdministradorController {
             // Verificar las credenciales del administrador
             if (!$seguridad->verificacion($usuario, $contrasenia)) {
                 // Las credenciales son inválidas, mostrar un mensaje de error
-                echo 'Usuario o contraseña inválidos';
+                echo '<h1>Usuario o contraseña inválidos</h1>';
+                return;
             }
-            // Las credenciales son válidas, redirección del Administrador a la página de inicio
-            $administrador = new Administrador();
-            $sesion=$administrador->log_in();
-            // Redirigir al administrador a la página de inicio
-            header('location:'.url_init.'/views/home.php');
+            // credenciales corectas
+            $_SESSION['nombre'] = $usuario;
+            var_dump($_SESSION);
+            // Redirigir a la página de inicio del sistema
+            header('Location: ' . url_init . '/views/administrador/home.php');
             exit();
         }
     }

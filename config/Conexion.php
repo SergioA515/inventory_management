@@ -3,10 +3,10 @@ class Conexion{
     private $pdo;
     private $status=false;
     private static $instancia;
-    private function __construct($user='root',$password='',$host='localhost',$db='inventario_exam')
+    public function __construct($user='root',$password='',$host='localhost',$db='inventario_exam')
     {
         try{
-            $DSN = "mysql:host=$host;db=$db;charset=utf8mb4";
+            $DSN = "mysql:host=$host;dbname=$db;charset=utf8mb4";
             $this->pdo = new PDO($DSN,$user,$password);
             $this->status = true; 
         }

@@ -1,11 +1,11 @@
-<?php 
-include_once ('Conexion.php');
+    <?php 
+include_once ('../config/Conexion.php');
 class Producto {
-    private $id;
-    private $nombre;
-    private $precio;
-    private $cantidad_disponible;
-    private $con=new Conexion;
+        private $id;
+        private $nombre;
+        private $precio;
+        private $cantidad_disponible;
+        private $con=new Conexion;
     public function __get($propiedad)
     {
         if(!property_exists($this,$propiedad)){
@@ -38,8 +38,9 @@ class Producto {
         try{
             $nombre=$_POST['nombre'];
             $sql='SELECT * FROM `productos` WHERE `pro_nombre`=?';
-            $this->con->preparar_consulta($sql,[$nombre]);
+            $producto=$this->con->preparar_consulta($sql,[$nombre]);
             $this->con->desconectar();
+            return $producto;
         }catch(Exception $err){
             echo($err->getMessage());
         }

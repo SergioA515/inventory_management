@@ -30,9 +30,14 @@ div.header{
 
     color: #000000;
 }
-.container{
+div.container_index{
     display: flex;
     justify-content: center;
+    
+}
+div.container{
+    display: flex;
+    justify-content: space-between;
     
 }
 form.logIn{
@@ -142,17 +147,46 @@ div.footer-min{
     border-radius: 2em;
 }
 /* - container comun de la app */
+div.container-query{
+    width: 20vh;
+    display: flex;
+    flex-wrap: wrap;
+
+    align-items: center;
+    margin: 0px 0px 0px 150px;
+    max-width: 30vh;
+    min-width: 130vh;
+}
 div.content-info{
     height: 35em;
-    width: 50%;
-    min-width: 90vh;
-    align-items: center;
+    width: 30em;
+    min-width: 30vh;
+    padding-left: 10px;
+    margin: 5px;
     justify-content: space-between;
-    min-width: 90vh;
     background: #94D5F5;
     border-radius: 15px;
-    margin: 2em;
-    padding: 20px;
+    padding: 0px;
+}
+div.content-info#details{
+    height: 25em;
+    width: 15em;    
+    min-width: 20vh;
+    min-height: 20vh;
+    justify-self: start;   
+    order: 1;
+    padding: 5px;
+    margin: -13em 0em -4em 1em;
+
+}
+div.content-info#redirect{
+    height: 5em;
+    width: 15em;
+    min-width: 20vh;
+    justify-self: start;    
+    order: 2;
+    margin: -6em 0em 2em 31.5em;
+    border-radius: 50px;
 }
 /* - formularios */
 form.register_obj{  

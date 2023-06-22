@@ -1,11 +1,10 @@
 <?php
 session_start();
+require_once('views/ingreso.php');
 require_once ('config/params.php');
 require_once('config/Conexion.php');
-require_once('views/ingreso.php');
 require_once('helpers/utils.php');
 
-/* Vamos a disponer de esta información para su uso eventual:
 // Obtén la URL solicitada
 $url = $_SERVER['REQUEST_URI'];
 
@@ -17,5 +16,4 @@ require_once('helpers/utils.php');
 
 // Verificar y redireccionar la URL
 redirect($url);
-*/
 require_once('views/includes/layouts/footer_standar.php');

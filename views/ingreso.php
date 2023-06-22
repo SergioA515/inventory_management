@@ -1,4 +1,5 @@
-<?php
+<?php 
+require_once '../controllers/administradorcontroller.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -6,23 +7,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="../public/css/style.css">
     <title>Document</title>
 </head>
 <body>
+    <?php
+    $admin=new AdministradorController;
+    $admin->log_in();
+    ?>
     <div class="header">
         <p class="controlText">
             CONTROL DE INVENTARIOS CONTRA
         </p>
     </div>
-    <div class="container">
-        <form action="" class="logIn" method="post">
+    <div class="container_index">
+        <form action="#" class="logIn" method="post">
             <p class="welcomeText">Bienvenido</p>
             <label for="usuarioInp" class="usuarioLbl">Usuario Administrador</label>
-            <input name="usuario" type="text" class="usuarioInp">
+            <input name="usuario" type="text" id="usuarioInp" required>
             <label for="contraseniaInp" class="contraseniaLbl">Contraseña Administrador</label>
-            <input name="contrasenia" type="text" class="contraseniaInp">
-            <input name="ingresar" type="button" value="Ingresar">
+            <input name="contrasenia" type="password" id="contraseniaInp" required>
+            <input name="ingresar" type="submit" value="Ingresar">
         </form>
     </div>
     <footer>

@@ -1,5 +1,5 @@
 <?php 
-include_once ('Conexion.php');
+include_once ('../config/Conexion.php');
 class Administrador {
     private $id;
     private $nombre;
