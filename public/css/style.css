@@ -5,7 +5,9 @@ html,body{
     font-style: normal;
 }
 body{
-    margin: 0;
+    background-image: url('<a href="https://www.freepik.es/foto-gratis/resumen-borroso-muebles-decoracion-almacen-tienda_4099075.htm#query=distribuidora&position=4&from_view=keyword&track=sph">Imagen de lifeforstock</a> en Freepik');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 div.header{
     position: relative;

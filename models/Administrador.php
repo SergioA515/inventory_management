@@ -17,6 +17,56 @@ class Administrador {
         $this->usuario=$usuario;
         $this->contrasenia=$contrasenia;
     }
+    // getters & setters
+    public function getNombre() {
+        return $this->nombre;
+    }
+
+    public function setNombre($nombre) {
+        $this->nombre = $nombre;
+    }
+
+    public function getDireccion() {
+        return $this->direccion;
+    }
+
+    public function setDireccion($direccion) {
+        $this->direccion = $direccion;
+    }
+
+    public function getCorreo() {
+        return $this->correo;
+    }
+
+    public function setCorreo($correo) {
+        $this->correo = $correo;
+    }
+
+    public function getApellido() {
+        return $this->apellido;
+    }
+
+    public function setApellido($apellido) {
+        $this->apellido = $apellido;
+    }
+
+    public function getUsuario() {
+        return $this->usuario;
+    }
+
+    public function setUsuario($usuario) {
+        $this->usuario = $usuario;
+    }
+
+    public function getContrasenia() {
+        return $this->contrasenia;
+    }
+
+    public function setContrasenia($contrasenia) {
+        $this->contrasenia = $contrasenia;
+    }
+
+    // - end 
     public function __get($propiedad)
     {
         if(!property_exists($this,$propiedad)){
