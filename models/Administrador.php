@@ -1,5 +1,6 @@
 <?php 
 include_once ('../config/Conexion.php');
+include_once ('../models/SeguridadAdministrador.php');
 class Administrador {
     private $id;
     private $nombre;
@@ -92,6 +93,7 @@ class Administrador {
                 $correo=$_POST['correo'];
                 $contrasenia = password_hash($contrasenia, PASSWORD_BCRYPT);
                 $db=new Conexion;
+                $db->conectar();
                 $sql='INSERT INTO `administradores`(adm_nombre,adm_apellido,adm_usuario,adm_contraseni,adm_direccion,adm_correo)VALUES(?,?,?,?,?,?)';
                 $db->preparar_consulta($sql,[$nombre,$apellido,$usuario,$contrasenia,$direccion,$correo]);
                 $db->desconectar();
@@ -102,8 +104,9 @@ class Administrador {
     }
     public function selectAdministradorNombre($nombre){
         try{
-            $sql='SELECT * FROM `administradores` WHERE `adm_nombre`=?';
             $db=new Conexion;
+            $sql='SELECT * FROM `administradores` WHERE `adm_nombre`=?';
+            $db->conectar();
             $db->preparar_consulta($sql,[$nombre]);
             $db->desconectar();
         }catch(Exception $err){
@@ -118,8 +121,9 @@ class Administrador {
             $usuario=$_POST['usuario'];
             $direccion=$_POST['direccion'];
             $correo=$_POST['correo'];
-            $sql='UPDATE `administradores` SET `adm_nombre`=?,`adm_apellido`=?,`adm_usuario`=?,`adm_direccion`=?,`adm_correo`=? WHERE `adm_nombre`=?';
             $db=new Conexion;
+            $sql='UPDATE `administradores` SET `adm_nombre`=?,`adm_apellido`=?,`adm_usuario`=?,`adm_direccion`=?,`adm_correo`=? WHERE `adm_nombre`=?';
+            $db->conectar();
             $db->preparar_consulta($sql,[$nombre,$apellido,$usuario,$direccion,$correo]);
             $db->desconectar();
         }catch(Exception $err){
@@ -130,29 +134,39 @@ class Administrador {
     public function deleteAdministrador(){
         try{
             $nombre=$_POST['nombre'];
-            $sql='DELETE FROM `administradores` WHERE `adm_nombre`=?';
             $db=new Conexion;
+            $sql='DELETE FROM `administradores` WHERE `adm_nombre`=?';
+            $db->conectar();
             $db->preparar_consulta($sql,[$nombre]);
             $db->desconectar();
         }catch(Exception $err){
             echo($err->getMessage());
         }
     }
-    public function log_in(){
-        $usuario=$this->usuario;
-        $contrasenia=$this->contrasenia;
-        $verificar= new SeguridadAdministrador;
-        if (!($verificar->log_sesion==true)){
-            echo('Acceso Denegado');
+    public function log_in($usuario,$contrasenia){
+        $autenticacionAdm = null;
+        try {
+            $autenticacion = new SeguridadAdministrador;
+            $autenticacionAdm = $autenticacion->verificacion($usuario, $contrasenia);
+            if ($autenticacionAdm !== null && $autenticacionAdm["adm_usuario"] === $usuario && password_verify($contrasenia, $autenticacionAdm["adm_contrasenia"])) {
+                $usuarioDB = $autenticacionAdm["adm_usuario"];
+                $contraseniaDB = $autenticacionAdm["adm_contrasenia"];
+                if (password_verify($contrasenia, $contraseniaDB)) {
+                    $_SESSION['usuario'] = $usuario;
+                    return $autenticacionAdm;
+                }
+            }
+        } catch (Error $err) {
+            var_dump($autenticacionAdm);
+            echo 'Pinche intruso culero ';
+            echo $err->getMessage();
         }
-        $_SESSION['nombre']=$usuario;
-        $administrador[]=[$usuario,$contrasenia];
-        return $administrador;
+        return null;
     }
     public function log_out(){
         session_unset();
         session_destroy();
-        header('Location:/views/ingreso.php');
+        header('location:/views/ingreso.php');
         exit();
     }
     public function __toString(){

@@ -1,5 +1,5 @@
 <?php
-require_once('config/params.php');
+require_once __DIR__.'\config\params.php';
 // Obtén la URL solicitada
 function requireClassFile($className) {
     $classFile = url_init . $className . '/controllers/' . '.php';

@@ -1,5 +1,5 @@
-<?php 
-require_once '../controllers/administradorcontroller.php';
+<?php
+require_once 'controllers/administradorcontroller.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,10 +11,6 @@ require_once '../controllers/administradorcontroller.php';
     <title>Document</title>
 </head>
 <body>
-    <?php
-    $admin=new AdministradorController;
-    $admin->log_in();
-    ?>
     <div class="header">
         <p class="controlText">
             CONTROL DE INVENTARIOS CONTRA
@@ -22,6 +18,9 @@ require_once '../controllers/administradorcontroller.php';
     </div>
     <div class="container_index">
         <form action="#" class="logIn" method="post">
+            <?php
+            $adm = new AdministradorController;
+            ?>
             <p class="welcomeText">Bienvenido</p>
             <label for="usuarioInp" class="usuarioLbl">Usuario Administrador</label>
             <input name="usuario" type="text" id="usuarioInp" required>

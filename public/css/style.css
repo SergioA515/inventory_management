@@ -5,7 +5,7 @@ html,body{
     font-style: normal;
 }
 body{
-    background-image: url('<a href="https://www.freepik.es/foto-gratis/resumen-borroso-muebles-decoracion-almacen-tienda_4099075.htm#query=distribuidora&position=4&from_view=keyword&track=sph">Imagen de lifeforstock</a> en Freepik');
+    background-image: url('https://img.freepik.com/foto-gratis/resumen-borroso-muebles-decoracion-almacen-tienda_74190-6648.jpg?w=740&t=st=1687735221~exp=1687735821~hmac=6ee4333784a947933a519c719e52792704d63b27f3149349f268f58668838ed1');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -58,7 +58,6 @@ div.footer{
     display: flex;
     width: 100%;
     height: 30%;
-    margin: 10px 10px 2px -5px;
     background: #94D5F5;
 }
 /* @General - Contenidos dentro de la app */
