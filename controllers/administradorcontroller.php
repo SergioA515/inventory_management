@@ -1,8 +1,8 @@
 <?php
 // Aquí trabajaremos el login y la sesión del administrador en la app;
 session_start();
+require_once '../config/params.php';
 require_once '../config/Conexion.php';
-require_once '../params.php';
 require_once '../models/Administrador.php';
 require_once '../views/administrador/home.php';
 class AdministradorController {
