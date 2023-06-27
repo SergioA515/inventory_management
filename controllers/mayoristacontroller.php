@@ -1,5 +1,5 @@
 <?php
-require_once '../models/Mayorista.php';
+require_once 'models/Mayorista.php';
 
 class MayoristaController{
 

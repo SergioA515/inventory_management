@@ -1,6 +1,6 @@
 <?php 
 // aquí manejaremos los productos y sus acciones necesarias
-require_once '../models/Producto.php';
+require_once 'models/Producto.php';
 
 class ProductoController{
 

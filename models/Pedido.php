@@ -1,5 +1,5 @@
 <?php 
-include_once '../config/Conexion.php';
+include_once 'config/Conexion.php';
 class Pedido extends Conexion{
     private $id;
     private $alias_pedido;

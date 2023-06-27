@@ -1,5 +1,5 @@
 <?php
-include_once '../config/Conexion.php';
+include_once 'config/Conexion.php';
 class SeguridadAdministrador {
     public function verificacion($usuario,$contrasenia){
         $db=new Conexion;

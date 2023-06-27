@@ -1,6 +1,6 @@
 <?php 
-include_once '../config/Conexion.php';
-include_once '../models/SeguridadAdministrador.php';
+include_once 'config/Conexion.php';
+include_once 'models/SeguridadAdministrador.php';
 class Administrador {
     private $id;
     private $nombre;
