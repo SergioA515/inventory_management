@@ -1,0 +1,46 @@
+<?php
+// Aquí trabajaremos el login y la sesión del administrador en la app;
+require('models/Administrador.php');
+class usuarioController {
+    
+    // private $view = $GLOBALS["view"];
+    public function index(){
+
+        global $view;
+        $html = $view->login('');
+        echo $html;
+    }
+    public function log_in() {
+        // Verificar si se envió el formulario de inicio de sesión
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $usuario = $_POST['usuario'];
+            $contrasenia = $_POST['contrasenia'];
+            
+            // Crear una instancia de Administrador
+            $administrador = new Administrador();
+            
+            // Intentar iniciar sesión
+            $autenticacionAdm = $administrador->log_in($usuario, $contrasenia);
+            
+            if ($autenticacionAdm !== null) {
+                // Inicio de sesión exitoso
+                $_SESSION['usuario'] = $usuario;
+                // Redirigir a la página de inicio del sistema
+                header('location: home.php');
+                exit();
+            } else {
+                // Las credenciales son inválidas
+                header('location: ?error=Usuario o contraseña incorrectos');
+            }
+        }
+    }
+    
+
+    public function log_out() {
+        // Crear una instancia de SeguridadAdministrador
+        $administrador = new Administrador();
+
+        // Cerrar la sesión del administrador
+        $administrador->log_out();
+    }
+}
