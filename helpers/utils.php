@@ -1,5 +1,5 @@
 <?php
-require_once '../config/params.php';
+require_once './config/params.php';
 // Obtén la URL solicitada
 function requireClassFile($className) {
     $classFile = url_init . $className . '/controllers/' . '.php';
@@ -14,9 +14,10 @@ function requireClassFile($className) {
 function redirect($url) {
     // Rutas disponibles y sus correspondientes controladores y acciones
     $routes = [
-        '/productos' => ['ProductoController', 'verProductos'], ['ProductoController', 'edicionProductos'],
-        '/mayoristas' => ['MayoristaController', 'verMayoristas'],
-        '/pedidos' => ['PedidoController', 'verPedidos']
+        '/Administradores'=> ['AdministradorController','log_in'],
+        '/Productos' => ['ProductoController', 'verProductos'], ['ProductoController', 'edicionProductos'],
+        '/Mayoristas' => ['MayoristaController', 'verMayoristas'],
+        '/Pedidos' => ['PedidoController', 'verPedidos']
         // Agrega más rutas según tus necesidades
     ];
 

@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__.'/controllers/administradorcontroller.php';
+require_once './controllers/administradorcontroller.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,10 +17,15 @@ require_once __DIR__.'/controllers/administradorcontroller.php';
         </p>
     </div>
     <div class="container_index">
-        <form action="#" class="logIn" method="post">
-            <?php
-            $adm = new AdministradorController;
-            ?>
+    <?php
+    $adm = new AdministradorController;
+    
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $adm->log_in($_POST['usuario'],$_POST['contrasenia']);
+    }
+    ?>
+    <!--administradorcontroller.php -->
+        <form action= "" class="logIn" method="post">
             <p class="welcomeText">Bienvenido</p>
             <label for="usuarioInp" class="usuarioLbl">Usuario Administrador</label>
             <input name="usuario" type="text" id="usuarioInp" required>

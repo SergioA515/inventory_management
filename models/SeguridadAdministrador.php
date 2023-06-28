@@ -1,23 +1,58 @@
 <?php
-include_once '../config/Conexion.php';
+require_once './config/Conexion.php';
+require_once './controllers/administradorcontroller.php';
 class SeguridadAdministrador {
-    public function verificacion($usuario,$contrasenia){
-        $db=new Conexion;
-        $sql="SELECT adm_usuario, adm_contrasenia FROM administradores WHERE adm_usuario = ?";
+    public function verificacion($usuario, $contrasenia) {
+        $db = new Conexion();
+        $sql = "SELECT adm_contrasenia FROM administradores WHERE adm_usuario = ?";
 
         $db->conectar();
-        $con=$db->preparar_consulta($sql,[$usuario]);
-
-        if ($con && count($con)>0){
-            $administradorDB=$con[0];
-            //var_dump($administradorDB);
-            if (password_verify($contrasenia, $administradorDB['adm_contrasenia'])){
-                error_log('SeguridadAdmin parece funcionar');
+        $con = $db->preparar_consulta($sql, [$usuario]);
+        $cont = count($con);
+        //Evaluar el numero de filas para entrar a condicionar
+        if ($cont > 0) {
+            $passDB = $con[0];
+            $hash = $passDB['adm_contrasenia'];
+            
+            // Verificar la contraseña utilizando password_verify
+            if (password_verify($contrasenia, $hash)) {
+                echo '<h1>eeeeeeeeeerrror</h1>';
                 $db->desconectar();
-                return [$administradorDB['adm_usuario'],$administradorDB['adm_contrasenia']]; 
+                return true; // Validación exitosa
+            }
+        }else{
+            $db->desconectar();
+            echo '<h1>eeeeeeeeeerrror false</h1>';
+            return false;
+        }
+        
+        var_dump($cont);
+        var_dump(password_verify($hash, $contrasenia));
+        var_dump($hash);
+        var_dump($contrasenia);
+        var_dump($con[0]);
+
+        
+    }
+    /* public function verificacion($usuario, $contrasenia) {
+        $db = new Conexion();
+        $sql = "SELECT adm_contrasenia FROM administradores WHERE adm_usuario = ?";
+
+        $db->conectar();
+        $con = $db->preparar_consulta($sql, [$usuario]);
+
+        if (count($con) > 0) {
+            $administradorDB = $con[0];
+            $hash = $administradorDB['adm_contrasenia'];
+            
+            // Verificar la contraseña utilizando password_verify
+            if (password_verify($contrasenia, $hash)) {
+                $db->desconectar();
+                return true; // Validación exitosa
             }
         }
+
         $db->desconectar();
-        return null;
-    }
+        return false;
+    */
 }

@@ -1,13 +1,15 @@
 <?php
-/*require_once '../../../index.php';
-require_once '../../config/params.php';
-require_once '././config/Conexion.php';*/
-require_once '../../controllers/administradorcontroller.php';
-require_once '../includes/layouts/header_standar.php';
+session_start();
+$file01 = dirname(__FILE__,2)."/includes/layouts/";
+$file02 = dirname(__FILE__,3)."/controllers/"; 
+require_once $file01.'header_standar.php';
+require_once $file02.'administradorcontroller.php';
+require_once '../config/Conexion.php';
+require_once '../config/params.php';
 ?>
 <div class="container_index">
     
 </div>
 <?php
-require_once('../includes/layouts/footer_standar.php');
+require_once $file.('footer_standar.php');
 ?>

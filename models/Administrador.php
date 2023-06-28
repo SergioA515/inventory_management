@@ -1,6 +1,6 @@
 <?php 
-include_once '../config/Conexion.php';
-include_once '../models/SeguridadAdministrador.php';
+include_once './config/Conexion.php';
+include_once './models/SeguridadAdministrador.php';
 class Administrador {
     private $id;
     private $nombre;
@@ -100,7 +100,7 @@ class Administrador {
             }catch(Exception $err){
                 echo($err->getMessage());
             }
-        }
+        }   
     }
     public function selectAdministradorNombre($nombre){
         try{
@@ -143,34 +143,35 @@ class Administrador {
             echo($err->getMessage());
         }
     }
-    public function log_in($usuario,$contrasenia){
-        $autenticacionAdm = null;
-        try {
-            $autenticacion = new SeguridadAdministrador;
-            $autenticacionAdm = $autenticacion->verificacion($usuario, $contrasenia);
-            if ($autenticacionAdm !== null && $autenticacionAdm["adm_usuario"] === $usuario && password_verify($contrasenia, $autenticacionAdm["adm_contrasenia"])) {
-                $usuarioDB = $autenticacionAdm["adm_usuario"];
-                $contraseniaDB = $autenticacionAdm["adm_contrasenia"];
-                if (password_verify($contrasenia, $contraseniaDB)) {
-                    $_SESSION['usuario'] = $usuario;
-                    return $autenticacionAdm;
-                }
-            }
-        } catch (Error $err) {
-            var_dump($autenticacionAdm);
-            echo 'Pinche intruso culero ';
-            echo $err->getMessage();
-        }
-        return null;
-    }
-    public function log_out(){
-        session_unset();
-        session_destroy();
-        header('location:/views/ingreso.php');
-        exit();
-    }
     public function __toString(){
         return self::class.$this->usuario;
     }
 }
+// public function log_in($usuario,$contrasenia){
+//     $autenticacionAdm = null;
+//     try {
+//         $autenticacion = new SeguridadAdministrador;
+//         $autenticacionAdm = $autenticacion->verificacion($usuario, $contrasenia);
+//         if ($autenticacionAdm !== null && $autenticacionAdm["adm_usuario"] === $usuario && password_verify($contrasenia, $autenticacionAdm["adm_contrasenia"])) {
+//             $usuarioDB = $autenticacionAdm["adm_usuario"];
+//             $contraseniaDB = $autenticacionAdm["adm_contrasenia"];
+//             if (password_verify($contrasenia, $contraseniaDB)) {
+//                 $_SESSION['usuario'] = $usuario;
+//                 echo 'Pinche logica culera ';
+//                 return $autenticacionAdm;
+//             }
+//         }
+//     } catch (Error $err) {
+//         var_dump($autenticacionAdm);
+//         echo 'Pinche intruso culero ';
+//         echo $err->getMessage();
+//     }
+//     return null;
+// }
+// public function log_out(){
+//     session_unset();
+//     session_destroy();
+//     header('location:/views/ingreso.php');
+//     exit();
+// }
 ?>
