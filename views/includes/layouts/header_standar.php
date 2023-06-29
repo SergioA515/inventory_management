@@ -1,8 +1,9 @@
 <?php 
+require_once 'head.php';
 $productos = dirname(__DIR__,2).'/productos/';
 $proveedores = dirname(__DIR__,2).'/proveedores/';
 $asociados = dirname(__DIR__,2).'/mayoristas/';
-include 'head.php';
+$dir=dirname(__DIR__);
 // require_once $productos.'consulta_producto.php';
 // require_once $proveedores.'consulta_proveedor.php';
 // require_once $asociados.'consulta_mayorista.php';

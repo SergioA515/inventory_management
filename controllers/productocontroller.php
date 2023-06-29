@@ -9,7 +9,7 @@ class ProductoController{
         $producto=new Producto;
         $productos=$producto->selectAll();
 
-        include('views/includes/tables/tabla_productos.php');
+        //include('views/includes/tables/tabla_productos.php');
         return $productos;
     }
     public function alterarProducto(){

@@ -1,8 +1,10 @@
 <?php
 $controller=dirname(__DIR__,1).'/controllers/';
+$dir=dirname(__DIR__);
 require_once $controller.'administradorcontroller.php';
+require_once $dir.'/views/includes/layouts/head.php';
 ?>
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,7 +12,7 @@ require_once $controller.'administradorcontroller.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../public/css/style.css">
     <title>Document</title>
-</head>
+</head> -->
 <body>
     <div class="header">
         <p class="controlText">

@@ -1,4 +1,4 @@
-<?php require_once '/head.php';?>
+<?php //include '/head.php';?>
 <body>
     <div class="header">
         <p class="controlText">

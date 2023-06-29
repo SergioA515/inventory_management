@@ -1,7 +1,4 @@
 <?php 
-//require_once('controllers/productocontroller.php');
-//$mayController=new MayoristaController;
-//$mayoristas = $mayController->verMayoristas();var_dump(__DIR__);
 $mayoristas=[];
 ?>
     <div class="content-info">

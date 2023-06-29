@@ -1,12 +1,11 @@
 <?php
-//$controller = dirname(__FILE__,3).'/controllers/'; 
-//require_once $controller.'productocontroller.php';
+$controller = dirname(__FILE__,4); 
+require_once $controller.'/controllers/productocontroller.php';
 //$productos = $prodController->verProductos();
 //require __DIR__.'\controller\productocontroller.php';
-//$prodController=new ProductoController;
-//$prodController->verProductos();
-var_dump(__DIR__);
-$productos=[];
+$prodController=new ProductoController;
+$productos=$prodController->verProductos();
+//var_dump($productos);
 ?>
     <div class="content-info">
         <div class="table-container">
@@ -18,6 +17,7 @@ $productos=[];
                         <th>Nombre</th>
                         <th>Precio</th>
                         <th>Cantidad</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,6 +28,7 @@ $productos=[];
                             <td><?php echo $producto['nombre']; ?></td>
                             <td><?php echo $producto['precio']; ?></td>
                             <td><?php echo $producto['cantidad']; ?></td>
+                            <td><a href="../productos/control_producto.php" class=""><span>Editar</span></a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

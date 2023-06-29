@@ -204,12 +204,13 @@ div.content-info#redirect{
     margin: -6em 0em 2em 31.5em;
     border-radius: 50px;
 }
+
 /* - formularios */
 form.register_obj{  
     height: 25em;
-    width: 35em;
-    min-width: 75vh;
-    max-width: 500vh;
+    width: 20em;
+    min-width: 20vh;
+    max-width: 350vh;
     display: flex;
     justify-content:center;
     align-items: center;
@@ -217,7 +218,7 @@ form.register_obj{
     margin: 1em;
     padding: 2em;
     border-radius: 60px;
-    background-color: #326773;
+    background-color: #83C4DB;
 }
 /* - tabla de contenidos */
 .table-container {
