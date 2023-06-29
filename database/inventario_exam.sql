@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-06-2023 a las 06:40:06
+-- Tiempo de generación: 29-06-2023 a las 13:43:00
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -31,16 +31,17 @@ CREATE TABLE `administradores` (
   `adm_id` int(11) NOT NULL,
   `adm_nombre` varchar(255) DEFAULT NULL,
   `adm_apellido` varchar(55) NOT NULL,
+  `adm_correo` varchar(100) NOT NULL,
   `adm_usuario` varchar(55) NOT NULL,
-  `adm_contrasenia` varchar(100) NOT NULL
+  `adm_contrasenia` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `administradores`
 --
 
-INSERT INTO `administradores` (`adm_id`, `adm_nombre`, `adm_apellido`, `adm_usuario`, `adm_contrasenia`) VALUES
-(1, 'Sergio Alejandro', 'Parra Toro', 'adminSergio', '1234567890');
+INSERT INTO `administradores` (`adm_id`, `adm_nombre`, `adm_apellido`, `adm_correo`, `adm_usuario`, `adm_contrasenia`) VALUES
+(2, 'Sergio Alejandro', 'Parra Toro', 'admin@mail.com', 'sergioAdmin', '$2y$10$tFIEJnNTNgc5.TUYRKboLO2am8PXQE6MmeNHk.4b3x5WFQOdN0Scu');
 
 -- --------------------------------------------------------
 
@@ -186,7 +187,7 @@ ALTER TABLE `proveedores`
 -- AUTO_INCREMENT de la tabla `administradores`
 --
 ALTER TABLE `administradores`
-  MODIFY `adm_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `adm_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `mayoristas`
