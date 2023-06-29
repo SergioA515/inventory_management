@@ -6,9 +6,9 @@ $model=dirname(__DIR__,1).'/models/';
 $config=dirname(__DIR__,1).'/config/';
 include_once $model.'Administrador.php';
 require_once $model.'SeguridadAdministrador.php';
-require_once $view.'administrador/home.php';
 include_once $config.'params.php';
-die();
+//require_once $view.'administrador/home.php';
+//die();
 class AdministradorController {
     public function log_in($usuario,$contrasenia) {
         // Verificar si se envió el formulario de inicio de sesión

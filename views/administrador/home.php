@@ -7,7 +7,7 @@ require_once $controller.'administradorcontroller.php';
 require_once $config.'Conexion.php';
 require_once $config.'params.php';
 ?>
-<div class="container_index">
+<div class="container_pag">
     
 </div>
 <?php

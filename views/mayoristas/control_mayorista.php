@@ -5,7 +5,7 @@ require_once('config/Conexion.php');
 require_once('views/ingreso.php');
 require_once('views/includes/layouts/header_standar.php');
 ?>
-<div class="container_index">
+<div class="container-query">
     <?php 
         require_once('views/includes/tables/tabla_mayoristas.php');
     ?>

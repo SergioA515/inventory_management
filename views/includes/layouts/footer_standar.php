@@ -1,4 +1,4 @@
-<footer>
+<footer class="session">
     <div class="footer">
         <?php echo'Soy un footer estandar';?>
         <br>

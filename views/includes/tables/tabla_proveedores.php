@@ -2,7 +2,7 @@
 //require_once('controllers/productocontroller.php');
 //$mayController=new MayoristaController;
 //$mayoristas = $mayController->verMayoristas();var_dump(__DIR__);
-$mayoristas=[];
+$proveedores=[];
 ?>
     <div class="content-info">
         <div class="table-container">
@@ -16,12 +16,12 @@ $mayoristas=[];
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($mayoristas as $mayorista) : ?>
+                    <?php foreach ($proveedores as $proveedor) : ?>
                         <tr>
                             <td>Propiedad</td>
                             <td>Valor</td>
-                            <td><?php echo $mayorista['nombre']; ?></td>
-                            <td><?php echo $mayorista['direccion']; ?></td>
+                            <td><?php echo $proveedor['nombre']; ?></td>
+                            <td><?php echo $proveedor['direccion']; ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

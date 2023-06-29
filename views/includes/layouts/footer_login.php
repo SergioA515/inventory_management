@@ -1,5 +1,5 @@
 
-    <footer>
+    <footer class="main">
     <div class="footer">
         <p class="info">
             Este Sistema es Propiedad Privada de la Distribuidora Contra

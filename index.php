@@ -3,6 +3,7 @@ require_once 'views/ingreso.php';
 require_once 'config/params.php';
 require_once 'config/Conexion.php';
 require 'helpers/utils.php';
+define('inventory_management',__DIR__);
 // $con= new Conexion;
 // $con->conectar();
 // var_dump($con);

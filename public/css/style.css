@@ -35,7 +35,10 @@ div.header{
 div.container_index{
     display: flex;
     justify-content: center;
-    
+    /* width: 60%;
+    background-color:#94D5F5;
+    height: 60%;
+     */
 }
 div.container{
     display: flex;
@@ -53,6 +56,14 @@ form.logIn{
     padding: 2em;
     border-radius: 60px;
     background-color: #326773;
+}
+footer.main{
+    display: flex;
+    justify-content: center;
+    border-radius: 60px;
+    bottom: 0;
+    position: relative;
+    width: 100%;
 }
 div.footer{
     display: flex;
@@ -133,10 +144,13 @@ aside::-webkit-scrollbar-thumb{
     font-weight: 500;
 }
 /* - footer de la app */
-footer{
+footer.session{
     display: flex;
     justify-content: center;
     border-radius: 60px;
+    bottom: 0;
+    position: relative;
+    width: 100%;
 }
 div.footer-min{
     display: flex;
@@ -159,6 +173,7 @@ div.container-query{
     min-width: 130vh;
 }
 div.content-info{
+    display: flex;
     height: 35em;
     width: 30em;
     min-width: 30vh;

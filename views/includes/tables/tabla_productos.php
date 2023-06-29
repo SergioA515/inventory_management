@@ -1,10 +1,14 @@
-<?php 
-require_once('controllers/productocontroller.php');
-$prodController=new ProductoController;
+<?php
+//$controller = dirname(__FILE__,3).'/controllers/'; 
+//require_once $controller.'productocontroller.php';
 //$productos = $prodController->verProductos();
-function generarTablaProducto($productos){
-    ?>
-    <div class="container">
+//require __DIR__.'\controller\productocontroller.php';
+//$prodController=new ProductoController;
+//$prodController->verProductos();
+var_dump(__DIR__);
+$productos=[];
+?>
+    <div class="content-info">
         <div class="table-container">
             <table>
                 <thead>
@@ -30,6 +34,3 @@ function generarTablaProducto($productos){
             </table>
         </div>
     </div>
-    <?php
-}
-?>
