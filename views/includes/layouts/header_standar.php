@@ -1,3 +1,11 @@
+<?php 
+$productos = dirname(__DIR__,2).'/productos/';
+$proveedores = dirname(__DIR__,2).'/proveedores/';
+$asociados = dirname(__DIR__,2).'/mayoristas/';
+// require_once $productos.'consulta_producto.php';
+// require_once $proveedores.'consulta_proveedor.php';
+// require_once $asociados.'consulta_mayorista.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,17 +31,17 @@
             </div>
             <div class="container-text">
                 <div>
-                    <span>Productos</span>
+                <a href="consulta_producto.php" class=""><span>Productos</span></a>
                 </div>
             </div>
             <div class="container-text">
                 <div>
-                    <span>Proveedores</span>
+                <a href="" class=""><span>Proveedores</span></a>
                 </div>
             </div>
             <div class="container-text">
                 <div>
-                    <span>Asociados</span>
+                <a href="" class=""><span>Asociados</span></a>
                 </div>
             </div>
         </div>

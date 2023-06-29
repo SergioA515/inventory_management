@@ -1,6 +1,7 @@
 <?php 
 // aquí manejaremos los productos y sus acciones necesarias
-require_once '../models/Producto.php';
+$model=dirname(__DIR__,1).'/models/';
+require_once $model.'/Producto.php';
 
 class ProductoController{
 

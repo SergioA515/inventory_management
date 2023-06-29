@@ -1,6 +1,6 @@
 <?php 
-include_once './config/Conexion.php';
-include_once './models/SeguridadAdministrador.php';
+$config=dirname(__DIR__,1).'/config/';
+include_once $config.'Conexion.php';
 class Administrador {
     private $id;
     private $nombre;

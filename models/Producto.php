@@ -1,11 +1,14 @@
 <?php 
-include_once '../config/Conexion.php';
+$config=dirname(__DIR__,1).'/config/';
+include_once $config.'Conexion.php';
 class Producto {
         private $id;
         private $nombre;
         private $precio;
         private $cantidad_disponible;
-        private $con=new Conexion;
+    
+    public function __construct(){
+    }
     public function __get($propiedad)
     {
         if(!property_exists($this,$propiedad)){
@@ -26,9 +29,11 @@ class Producto {
                 $nombre=$_POST['nombre'];
                 $precio=$_POST['precio'];
                 $cantidad_disponible=$_POST['cantidad_disponible'];
+                $db=new Conexion;
+                $db->conectar();
                 $sql='INSERT INTO `productos`(pro_nombre, pro_precio, pro_cantidad_disponible)VALUES(?,?,?)';
-                $this->con->preparar_consulta($sql,[$nombre,$precio,$cantidad_disponible]);
-                $this->con->desconectar();
+                $db->preparar_consulta($sql,[$nombre,$precio,$cantidad_disponible]);
+                $db->desconectar();
             }catch(Exception $err){
                 echo($err->getMessage());
             }
@@ -37,9 +42,11 @@ class Producto {
     public function selectProductoNombre($nombre){
         try{
             $nombre=$_POST['nombre'];
+            $db=new Conexion;
+            $db->conectar();
             $sql='SELECT * FROM `productos` WHERE `pro_nombre`=?';
-            $producto=$this->con->preparar_consulta($sql,[$nombre]);
-            $this->con->desconectar();
+            $producto=$db->preparar_consulta($sql,[$nombre]);
+            $db->desconectar();
             return $producto;
         }catch(Exception $err){
             echo($err->getMessage());
@@ -50,27 +57,33 @@ class Producto {
             $nombre=$_POST['nombre'];
             $precio=$_POST['precio'];
             $cantidad_disponible=$_POST['cantidad_disponible'];
+            $db=new Conexion;
+            $db->conectar();
             $sql='UPDATE`productos`SET `pro_nombre`=?,`pro_precio`=?,`pro_cantidad_disponible`=? WHERE `pro_nombre`='.$nombre;;
-            $this->con->preparar_consulta($sql,[$nombre,$precio,$cantidad_disponible]);
-            $this->con->desconectar();
+            $db->preparar_consulta($sql,[$nombre,$precio,$cantidad_disponible]);
+            $db->desconectar();
         }catch(Exception $err){
             echo($err->getMessage());
         }
     }
     public function deleteProducto(){
         try{
+            $db=new Conexion;
+            $db->conectar();
             $nombre=$_POST['nombre'];
             $sql='DELETE FROM `productos` WHERE `pro_nombre`=?';
-            $this->con->preparar_consulta($sql,[$nombre]);
-            $this->con->desconectar();
+            $db->preparar_consulta($sql,[$nombre]);
+            $db->desconectar();
         }catch(Exception $err){
             echo($err->getMessage());
         }
     }
     public function selectAll(){
         try {
+            $db=new Conexion;
+            $db->conectar();
             $sql='SELECT prod_nombre, prod_precio, prod_cantidad_disponible FROM `productos`';
-            $results = $this->con->preparar_consulta($sql,[]);
+            $results = $db->preparar_consulta($sql,[]);
             $productos=[];
             foreach($results as $producto){
                 $nombre=$producto['prod_nombre'];
@@ -83,7 +96,7 @@ class Producto {
                 'cantidad'=>$cantidad_disponible
                 ];
             }
-            $this->con->desconectar();
+            $db->desconectar();
             return $productos;
         }catch(Exception $err){
             echo($err->getMessage());

@@ -1,5 +1,6 @@
 <?php
-require_once './controllers/administradorcontroller.php';
+$controller=dirname(__DIR__,1).'/controllers/';
+require_once $controller.'administradorcontroller.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

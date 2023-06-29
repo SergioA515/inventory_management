@@ -1,11 +1,14 @@
 <?php
-// Aquí trabajaremos el login y la sesión del administrador en la app;
 session_start();
-require_once './models/Administrador.php';
-require_once './config/params.php';
-require_once './models/SeguridadAdministrador.php';
-require_once './config/Conexion.php';
-//require_once './views/administrador/home.php';
+// Aquí trabajaremos el login y la sesión del administrador en la app;
+$view=dirname(__DIR__,1).'/views/';
+$model=dirname(__DIR__,1).'/models/';
+$config=dirname(__DIR__,1).'/config/';
+include_once $model.'Administrador.php';
+require_once $model.'SeguridadAdministrador.php';
+require_once $view.'administrador/home.php';
+include_once $config.'params.php';
+die();
 class AdministradorController {
     public function log_in($usuario,$contrasenia) {
         // Verificar si se envió el formulario de inicio de sesión

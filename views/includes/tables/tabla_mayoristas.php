@@ -1,8 +1,8 @@
 <?php 
 require_once('controllers/productocontroller.php');
-$mayController=new MayoristaController;
-$mayoristas = $mayController->verMayoristas();
-function generarTablaConetnido($mayoristas){
+//$mayController=new MayoristaController;
+//$mayoristas = $mayController->verMayoristas();
+function generarTablaMayorista($mayoristas){
     ?>
     <div class="container">
         <div class="table-container">

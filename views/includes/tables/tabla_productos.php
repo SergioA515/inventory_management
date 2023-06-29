@@ -1,8 +1,8 @@
 <?php 
 require_once('controllers/productocontroller.php');
 $prodController=new ProductoController;
-$productos = $prodController->verProductos();
-function generarTablaConetnido($productos){
+//$productos = $prodController->verProductos();
+function generarTablaProducto($productos){
     ?>
     <div class="container">
         <div class="table-container">
@@ -31,4 +31,5 @@ function generarTablaConetnido($productos){
         </div>
     </div>
     <?php
-} 
+}
+?>

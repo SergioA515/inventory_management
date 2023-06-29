@@ -1,5 +1,6 @@
 <?php 
-include_once '../config/Conexion.php';
+$config=dirname(__DIR__,1).'/config/';
+include_once $config.'Conexion.php';
 class Proveedor extends Conexion{
     private $id;
     private $nombre;

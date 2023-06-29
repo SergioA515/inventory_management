@@ -1,6 +1,8 @@
 <?php
-require_once './config/Conexion.php';
-require_once './controllers/administradorcontroller.php';
+$config=dirname(__DIR__,1).'/config/';
+//$controller=dirname(__DIR__,1).'/controllers/';
+include_once $config.'Conexion.php';
+//require_once $controller.'administradorcontroller.php';
 class SeguridadAdministrador {
     public function verificacion($usuario, $contrasenia) {
         $db = new Conexion();
