@@ -12,10 +12,20 @@ class ProductoController{
         //include('views/includes/tables/tabla_productos.php');
         return $productos;
     }
-    public function alterarProducto(){
-        // Redirige al formulario de edición del producto
-        header("Location: formulario_edicion_producto.php");
-        exit;
+    public function crearProducto($nombre,$precio,$cantidad_disponible){
+        // funcion del formulario de edición del producto
+        if (isset($_POST['crearProducto'])) {
+            // $nombre=$_POST['nombre'];
+            // $precio=$_POST['precio'];
+            // $cantidad_disponible=$_POST['cantidad_disponible'];
+            $producto=new Producto;
+            $producto->createProducto($nombre,$precio,$cantidad_disponible);
+            echo '</h1> Creado con Exito </h1>';
+        } else {
+            echo '</h1> Algo salio mal </h1>';
+        }
+        //header("Location: formulario_edicion_producto.php");
+        //exit;
     }
 
     public function obtenerProducto($nombre){
@@ -34,20 +44,19 @@ class ProductoController{
 
             // Realiza las operaciones necesarias después de actualizar el producto
 
-            header("Location: lista_productos.php");
-            exit;
         }
     }
     
-    public function eliminarProducto(){
-        if(isset($_POST['nombre'])){
+    public function eliminarProducto($nombre){
+        if(isset($_POST['eliminarProducto'])){
+            $nombre=$_POST['nombre'];
             $producto = new Producto;
-            $producto->deleteProducto();
-
+            $producto->deleteProducto($nombre);
             // Realiza las operaciones necesarias después de eliminar el producto
+            echo '</h1> Se elimino el registro </h1>'.$nombre;
+        } else {
+            echo '</h1> Algo salio re mal </h1>';
 
-            header("Location: lista_productos.php");
-            exit;
         }
     }
 }

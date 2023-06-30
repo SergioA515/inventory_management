@@ -23,17 +23,17 @@ $dir=dirname(__DIR__);
             </div>
             <div class="container-text">
                 <div>
-                <a href="../productos/consulta_producto.php" class=""><span>Productos</span></a>
+                <a href="../productos/crear_producto.php" class=""><span>Productos</span></a>
                 </div>
             </div>
             <div class="container-text">
                 <div>
-                <a href="../proveedores/consulta_proveedores.php" class=""><span>Proveedores</span></a>
+                <a href="../proveedores/crear_proveedores.php" class=""><span>Proveedores</span></a>
                 </div>
             </div>
             <div class="container-text">
                 <div>
-                <a href="../mayoristas/consulta_mayorista.php" class=""><span>Asociados</span></a>
+                <a href="../mayoristas/crear_mayorista.php" class=""><span>Asociados</span></a>
                 </div>
             </div>
         </div>

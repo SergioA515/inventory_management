@@ -1,5 +1,6 @@
+<?php 
 
-
+?>
 <div class="col-6">
     <div class="container-fluid">
         <form class='register_obj'>

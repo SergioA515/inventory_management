@@ -23,20 +23,15 @@ class Producto {
         }
         $this->$propiedad=$valor;    
     }
-    public function createProducto(){
-        if(isset($_POST['producto'])){
-            try{
-                $nombre=$_POST['nombre'];
-                $precio=$_POST['precio'];
-                $cantidad_disponible=$_POST['cantidad_disponible'];
-                $db=new Conexion;
-                $db->conectar();
-                $sql='INSERT INTO `productos`(pro_nombre, pro_precio, pro_cantidad_disponible)VALUES(?,?,?)';
-                $db->preparar_consulta($sql,[$nombre,$precio,$cantidad_disponible]);
-                $db->desconectar();
-            }catch(Exception $err){
-                echo($err->getMessage());
-            }
+    public function createProducto($nombre,$precio,$cantidad_disponible){
+        try{
+            $db=new Conexion;
+            $db->conectar();
+            $sql='INSERT INTO `productos`(prod_nombre, prod_precio, prod_cantidad_disponible)VALUES(?,?,?)';
+            $db->preparar_consulta($sql,[$nombre,$precio,$cantidad_disponible]);
+            $db->desconectar();
+        }catch(Exception $err){
+            echo($err->getMessage());
         }
     }
     public function selectProductoNombre($nombre){
@@ -66,12 +61,12 @@ class Producto {
             echo($err->getMessage());
         }
     }
-    public function deleteProducto(){
+    public function deleteProducto($nombre){
         try{
             $db=new Conexion;
             $db->conectar();
             $nombre=$_POST['nombre'];
-            $sql='DELETE FROM `productos` WHERE `pro_nombre`=?';
+            $sql='DELETE FROM `productos` WHERE `prod_nombre`=?';
             $db->preparar_consulta($sql,[$nombre]);
             $db->desconectar();
         }catch(Exception $err){
